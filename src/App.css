@@ -17,3 +17,10 @@ html, body {
   background: #111;
   color: #eee;
 }
+.hidden {
+  display: none;
+}
+
+.recharts-wrapper {
+  margin: auto;
+}
