@@ -18,20 +18,24 @@ export const Info = props => {
     let stateData = info.find(i => i.state === props.form.state)
     if (!stateData) return "";
     return (
-        <div>
-            <h2>{stateData.name}</h2>
-            <div className="buttons">
-                <a href={stateData.covid19Site} target="_blank" rel="noopener noreferrer">link1</a>
-                <a href={stateData.covid19SiteSecondary} target="_blank" rel="noopener noreferrer">link2</a>
-                <a href={stateData.covid19SiteTertiary} target="_blank" rel="noopener noreferrer">link3</a>
+        <div className="flex">
+            <div>
+                <h2>{stateData.name}</h2>
+                <div className="buttons">
+                    <a href={stateData.covid19Site} target="_blank" rel="noopener noreferrer">link1</a>
+                    <a href={stateData.covid19SiteSecondary} target="_blank" rel="noopener noreferrer">link2</a>
+                    <a href={stateData.covid19SiteTertiary} target="_blank" rel="noopener noreferrer">link3</a>
+                </div>
+                <ReactMarkdown source={stateData.notes} />
             </div>
-            <ReactMarkdown source={stateData.notes} />
-            <p>{stateData.twitter}</p>
-            <TwitterTimelineEmbed
-                sourceType="profile"
-                screenName={stateData.twitter.replace("@", "")}
-                options={{height: 400}}
-            />
+            <div style={{flex: "1 0 25%"}}>
+                <p>{stateData.twitter}</p>
+                <TwitterTimelineEmbed
+                    sourceType="profile"
+                    screenName={stateData.twitter.replace("@", "")}
+                    options={{height: 400}}
+                />
+            </div>
         </div>
     )
 }
